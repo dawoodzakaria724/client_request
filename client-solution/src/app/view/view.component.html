@@ -1,0 +1,42 @@
+<!-- Manager Dropdown -->
+<h2 class="center">
+  Manager:
+  <select #manager (change)="update($event)">
+    <option value="default">----</option>
+    <!-- displaying list of managers in dropdown -->
+    <option *ngFor="let manager of managers" [value]="manager">
+      {{ manager }}
+    </option>
+  </select>
+</h2>
+<div class="table-center">
+  <table mat-table [dataSource]="employees" class="mat-elevation-z8 demo-table">
+    <!-- Employee ID Column -->
+    <ng-container matColumnDef="employee_id">
+      <th mat-header-cell *matHeaderCellDef>Employee ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.employee_id }}</td>
+    </ng-container>
+
+    <!-- Last Name Column -->
+    <ng-container matColumnDef="last_name">
+      <th mat-header-cell *matHeaderCellDef>Last Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.last_name }}</td>
+    </ng-container>
+
+    <!-- First Name Column -->
+    <ng-container matColumnDef="first_name">
+      <th mat-header-cell *matHeaderCellDef>First Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.first_name }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+
+<!-- Add Employee Button -->
+<div class="demo-button-container">
+  <button mat-raised-button (click)="addEmployee()" class="demo-button">
+    Add Employee
+  </button>
+</div>

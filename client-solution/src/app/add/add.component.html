@@ -1,0 +1,43 @@
+<div class="center">
+  <h1>Add New Employee</h1>
+
+  <!-- Looping through list of managers -->
+  <form [formGroup]="profileForm">
+    <h3 class="manager">
+      <mat-form-field appearance="fill">
+        <mat-label>Manager</mat-label>
+        <mat-select formControlName="manager">
+          <mat-option *ngFor="let manager of managers" [value]="manager">
+            {{ manager }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </h3>
+
+    <mat-form-field class="text-field" appearance="fill">
+      <mat-label>Employee ID</mat-label>
+      <input formControlName="employee_id" matInput />
+    </mat-form-field>
+    <mat-form-field class="text-field" appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input formControlName="last_name" matInput />
+    </mat-form-field>
+
+    <mat-form-field class="text-field" appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input formControlName="first_name" matInput />
+    </mat-form-field>
+
+    <mat-form-field class="text-field" appearance="fill">
+      <mat-label>Roles</mat-label>
+      <input formControlName="roles" matInput />
+      <textarea matInput></textarea>
+    </mat-form-field>
+  </form>
+
+  <div>
+    <button mat-raised-button (click)="save()" class="button">Save</button>
+
+    <button mat-raised-button (click)="cancel()" class="button">Cancel</button>
+  </div>
+</div>
